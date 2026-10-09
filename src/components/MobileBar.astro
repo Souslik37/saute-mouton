@@ -1,0 +1,14 @@
+---
+import { ui, routes, DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { whatsappUrl } from '../lib/contact';
+interface Props { locale?: Locale }
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = ui(locale);
+---
+<div class="h-20 md:hidden" aria-hidden="true"></div>
+<div class="fixed inset-x-0 bottom-0 z-40 flex gap-2 border-t-2 border-accent-soft bg-white/95 p-3 backdrop-blur md:hidden">
+  <a href={routes(locale).reserver} class="btn-primary flex-1 !px-3">{t.cta.book}</a>
+  <a href={whatsappUrl(t.form.whatsappIntro)} class="btn-whatsapp !px-4" rel="noopener" target="_blank">
+    <span>WhatsApp</span><span class="sr-only"> (nouvelle fenêtre)</span>
+  </a>
+</div>

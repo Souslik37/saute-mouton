@@ -1,0 +1,66 @@
+{
+  "name": "Saute-Mouton",
+  "url": "https://souslik37.github.io",
+  "basePath": "/saute-mouton",
+  "demo": true,
+  "baseCity": "Uccle",
+  "currency": "EUR",
+  "deliveryFee": 15,
+  "owner": {
+    "firstName": "Alex",
+    "fullName": "[NOM COMPLET DE L'EXPLOITANT]",
+    "photo": "alex.jpg"
+  },
+  "contact": {
+    "phoneDisplay": "[TÉLÉPHONE]",
+    "phoneE164": "",
+    "whatsappE164": "",
+    "email": "[E-MAIL]"
+  },
+  "legal": {
+    "companyName": "[DÉNOMINATION OU NOM DE L'INDÉPENDANT]",
+    "bce": "[N° BCE]",
+    "vat": "[N° TVA OU MENTION FRANCHISE]",
+    "address": {
+      "street": "[RUE ET NUMÉRO]",
+      "postalCode": "1180",
+      "city": "Uccle",
+      "country": "BE"
+    }
+  },
+  "fr": {
+    "tagline": "Location de châteaux gonflables au sud de Bruxelles, livrés, installés et repris",
+    "demoNotice": "Site de démonstration : châteaux, prix et illustrations sont fictifs.",
+    "promise": [
+      {
+        "title": "On s'occupe de tout",
+        "text": "Alex livre, monte, ancre le château et revient le démonter. Vous n'avez rien à porter."
+      },
+      {
+        "title": "Norme EN 14960",
+        "text": "Tous les châteaux respectent la norme européenne de sécurité des structures gonflables."
+      },
+      {
+        "title": "Un seul berger",
+        "text": "Une seule personne, Alex, de la première question jusqu'à la reprise."
+      }
+    ],
+    "steps": [
+      {
+        "title": "Choisissez votre château",
+        "text": "Comparez l'espace requis avec votre jardin, puis envoyez votre date par le formulaire ou WhatsApp."
+      },
+      {
+        "title": "Alex confirme et installe",
+        "text": "Réponse sous 24 h. Le jour J, le château est livré, gonflé, ancré, et les consignes vous sont expliquées."
+      },
+      {
+        "title": "Sautez, on range",
+        "text": "Les enfants profitent. Alex revient démonter et nettoyer : vous n'avez rien à ranger."
+      }
+    ],
+    "deliveryNote": "Livraison forfaitaire de 15 € dans toute la zone desservie. Installation et reprise incluses.",
+    "weekendNote": "Formule week-end : livraison le vendredi, reprise le lundi.",
+    "priceNote": "Prix TVAC."
+  }
+}

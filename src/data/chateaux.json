@@ -1,0 +1,160 @@
+[
+  {
+    "slug": "petit-pre",
+    "order": 1,
+    "dimensions": {
+      "length": 3,
+      "width": 3,
+      "height": 2.4
+    },
+    "spaceRequired": {
+      "length": 4.5,
+      "width": 4.5
+    },
+    "ageMin": 2,
+    "ageMax": 5,
+    "capacity": 5,
+    "maxUserHeightCm": 115,
+    "priceDay": 105,
+    "priceWeekend": 160,
+    "power": "1 souffleur 230 V – 1 prise standard",
+    "certification": "EN 14960",
+    "images": [
+      "petit-pre/1.jpg",
+      "petit-pre/2.jpg"
+    ],
+    "unavailable": [
+      "2026-10-17",
+      "2026-10-24",
+      "2026-11-07",
+      "2026-11-21"
+    ],
+    "fr": {
+      "name": "Le Petit Pré",
+      "short": "Un enclos doux et bas pour les tout-petits, avec filets sur les quatre côtés.",
+      "description": "Le Petit Pré est fait pour les 2–5 ans : une surface de saut basse, des murs filets tout autour pour garder les enfants à l'œil, et une entrée avec marchepied. Compact, il se glisse dans la plupart des jardins de ville.",
+      "idealFor": [
+        "Premiers anniversaires",
+        "Baptêmes",
+        "Jardins de ville"
+      ],
+      "included": [
+        "Souffleur électrique",
+        "Bâche de protection au sol",
+        "Piquets et sacs de lest",
+        "Rallonge 25 m",
+        "Installation et reprise",
+        "Fiche de consignes de sécurité"
+      ],
+      "imageAlts": [
+        "Illustration du Petit Pré, château gonflable blanc et vert entouré de filets",
+        "Le Petit Pré installé sur une pelouse, vue de côté"
+      ]
+    }
+  },
+  {
+    "slug": "bergerie",
+    "order": 2,
+    "dimensions": {
+      "length": 5,
+      "width": 4,
+      "height": 3.6
+    },
+    "spaceRequired": {
+      "length": 6.5,
+      "width": 5.5
+    },
+    "ageMin": 3,
+    "ageMax": 9,
+    "capacity": 8,
+    "maxUserHeightCm": 145,
+    "priceDay": 155,
+    "priceWeekend": 235,
+    "power": "1 souffleur 230 V – 1 prise standard",
+    "certification": "EN 14960",
+    "images": [
+      "bergerie/1.jpg",
+      "bergerie/2.jpg"
+    ],
+    "unavailable": [
+      "2026-10-18",
+      "2026-10-31",
+      "2026-11-14",
+      "2026-11-28"
+    ],
+    "fr": {
+      "name": "La Bergerie",
+      "short": "Le château à tout faire : zone de saut, deux obstacles et un toboggan.",
+      "description": "La Bergerie réunit une grande zone de saut, deux obstacles gonflables et un toboggan latéral. C'est le château des anniversaires de 3 à 9 ans : assez grand pour une bande d'enfants, assez compact pour un jardin moyen.",
+      "idealFor": [
+        "Anniversaires 3–9 ans",
+        "Communions",
+        "Fêtes de quartier"
+      ],
+      "included": [
+        "Souffleur électrique",
+        "Bâche de protection au sol",
+        "Piquets et sacs de lest",
+        "Rallonge 25 m",
+        "Installation et reprise",
+        "Fiche de consignes de sécurité"
+      ],
+      "imageAlts": [
+        "Illustration de La Bergerie, château gonflable vert et blanc avec toboggan",
+        "La Bergerie vue de face, toboggan à droite"
+      ]
+    }
+  },
+  {
+    "slug": "grand-troupeau",
+    "order": 3,
+    "dimensions": {
+      "length": 9,
+      "width": 3,
+      "height": 3.5
+    },
+    "spaceRequired": {
+      "length": 10.5,
+      "width": 4.5
+    },
+    "ageMin": 5,
+    "ageMax": 12,
+    "capacity": 10,
+    "maxUserHeightCm": 160,
+    "priceDay": 220,
+    "priceWeekend": 325,
+    "power": "2 souffleurs 230 V – 2 prises sur circuits séparés",
+    "certification": "EN 14960",
+    "images": [
+      "grand-troupeau/1.jpg",
+      "grand-troupeau/2.jpg"
+    ],
+    "unavailable": [
+      "2026-10-16",
+      "2026-10-23",
+      "2026-11-20"
+    ],
+    "fr": {
+      "name": "Le Grand Troupeau",
+      "short": "Un parcours d'obstacles de 9 m pour les grands : écoles, clubs et entreprises.",
+      "description": "Le Grand Troupeau enchaîne haies à sauter, tunnel et mur d'escalade sur 9 mètres, avant une descente en toboggan. Deux enfants s'y affrontent côte à côte. Il demande un terrain long : cours d'école, terrains de club, événements d'entreprise.",
+      "idealFor": [
+        "Écoles et mouvements de jeunesse",
+        "Clubs sportifs",
+        "Événements d'entreprise"
+      ],
+      "included": [
+        "2 souffleurs électriques",
+        "Bâche de protection au sol",
+        "Piquets et sacs de lest",
+        "2 rallonges 25 m",
+        "Installation et reprise",
+        "Fiche de consignes de sécurité"
+      ],
+      "imageAlts": [
+        "Illustration du Grand Troupeau, parcours d'obstacles gonflable vert et blanc",
+        "Le Grand Troupeau vu de profil, avec haies et toboggan final"
+      ]
+    }
+  }
+]

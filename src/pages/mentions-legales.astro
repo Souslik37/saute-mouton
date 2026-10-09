@@ -1,0 +1,7 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { Content } from '../data/pages/mentions-legales.fr.md';
+import { ui } from '../lib/i18n';
+const p = ui().pages.mentions;
+---
+<LegalLayout title={p.title} description={p.description} h1={p.h1} noindex><Content /></LegalLayout>

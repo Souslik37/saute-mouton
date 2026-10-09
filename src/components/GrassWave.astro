@@ -1,0 +1,8 @@
+---
+// Séparateur en vague d'herbe. `to` = couleur de la section suivante.
+interface Props { class?: string; color?: string; flip?: boolean }
+const { class: cls = '', color = 'var(--color-cream)', flip = false } = Astro.props;
+---
+<svg class={`block h-10 w-full sm:h-16 ${cls}`} viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true" focusable="false" style={flip ? 'transform:scaleY(-1)' : undefined}>
+  <path fill={color} d="M0 48c60-22 120-22 180 0s120 22 180 0 120-22 180 0 120 22 180 0 120-22 180 0 120 22 180 0 120-22 180 0 120 22 180 0V80H0z" />
+</svg>

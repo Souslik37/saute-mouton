@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import BookingForm from '../components/BookingForm.astro';
+import { site } from '../lib/data';
+import { ui, routes } from '../lib/i18n';
+const t = ui();
+const p = t.pages.reserver;
+---
+<BaseLayout title={p.title} description={p.description} hideMobileBar>
+  <PageHeader title={p.h1} lead={p.lead} />
+  <div class="container-x grid gap-10 lg:grid-cols-[1.6fr_1fr]">
+    <BookingForm />
+    <aside class="flex flex-col gap-5 lg:sticky lg:top-24 lg:self-start">
+      <ol class="card flex flex-col gap-5 p-7" role="list" aria-label={t.home.stepsTitle}>
+        {site.fr.steps.map((s, i) => (
+          <li class="flex gap-4">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent font-display font-extrabold text-white" aria-hidden="true">{i + 1}</span>
+            <div><p class="font-extrabold">{s.title}</p><p class="text-sm text-muted">{s.text}</p></div>
+          </li>
+        ))}
+      </ol>
+      <p class="rounded-3xl bg-accent-soft p-6 text-sm">{site.fr.deliveryNote} {site.fr.weekendNote} {site.fr.priceNote} <a href={routes().conditions}>{t.cta.conditions}</a></p>
+    </aside>
+  </div>
+</BaseLayout>

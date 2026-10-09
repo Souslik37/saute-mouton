@@ -1,0 +1,19 @@
+---
+import { rich } from '../lib/format';
+interface Props { items: { id: string; q: string; a: string }[]; headingLevel?: 'h2' | 'h3' }
+const { items, headingLevel = 'h3' } = Astro.props;
+const H = headingLevel;
+---
+<div class="flex flex-col gap-3">
+  {items.map((i) => (
+    <details class="group rounded-2xl border-2 border-line bg-white open:border-accent" id={`faq-${i.id}`}>
+      <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-6 py-4 [&::-webkit-details-marker]:hidden">
+        <H class="font-sans text-lg font-bold tracking-normal">{i.q}</H>
+        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent-ink transition group-open:rotate-180" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="h-4 w-4"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </span>
+      </summary>
+      <p class="px-6 pb-6 text-muted" set:html={rich(i.a)} />
+    </details>
+  ))}
+</div>

@@ -1,0 +1,319 @@
+---
+// Formulaire Netlify Forms. Fonctionne sans JavaScript (validation HTML native) ;
+// le script ajoute le blocage des dates indisponibles et le bouton WhatsApp pré-rempli.
+import { site, chateaux, communes } from '../lib/data';
+import { ui, routes, DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { whatsappUrl } from '../lib/contact';
+import { longDate } from '../lib/format';
+import Req from './Req.astro';
+
+interface Props { locale?: Locale }
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = ui(locale).form;
+const r = routes(locale);
+
+const availability = Object.fromEntries(
+  chateaux.map((c) => [c.slug, { name: c.fr.name, dates: [...c.unavailable].sort(), labels: Object.fromEntries(c.unavailable.map((d) => [d, longDate(d)])) }]),
+);
+const messages = {
+  dateUnavailable: t.dateUnavailable,
+  datePast: t.datePast,
+  dateNotFriday: t.dateNotFriday,
+  dateWeekendUnavailable: t.dateWeekendUnavailable,
+  unavailableNone: t.unavailableNone,
+  whatsappIntro: t.whatsappIntro,
+  labels: {
+    chateau: t.chateau, formula: t.formula, date: t.date, commune: t.commune, ground: t.ground,
+    access: t.access, power: t.power, name: t.name, phone: t.phone, message: t.message,
+  },
+};
+const field = 'mt-2 block min-h-12 w-full rounded-2xl border-2 border-muted/40 bg-white px-4 py-3 text-lg focus:border-ink';
+const radio = 'flex min-h-12 cursor-pointer items-center gap-3 rounded-2xl border-2 border-muted/30 bg-white px-4 py-2 font-semibold has-[:checked]:border-ink has-[:checked]:bg-accent-soft';
+const yesNo = [
+  { value: 'oui', label: t.yes },
+  { value: 'non', label: t.no },
+  { value: 'ne-sait-pas', label: t.unsure },
+];
+---
+<form
+  name="reservation"
+  method="POST"
+  action={r.merci}
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  class="card flex flex-col gap-7 p-6 sm:p-9"
+  id="booking-form"
+  aria-labelledby="form-title"
+>
+  <input type="hidden" name="form-name" value="reservation" />
+  <p class="hidden"><label>Ne pas remplir : <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+  <div>
+    <h2 id="form-title" class="text-2xl">{t.title}</h2>
+    <p class="mt-2 text-muted">{t.intro}</p>
+  </div>
+
+  <div id="error-summary" class="hidden rounded-2xl border-2 border-accent-ink bg-accent-soft p-5" tabindex="-1" role="alert">
+    <p class="font-extrabold">{t.errorSummary}</p>
+    <ul class="mt-2 list-disc pl-5"></ul>
+  </div>
+
+  <div class="grid gap-6 sm:grid-cols-2">
+    <div class="sm:col-span-2">
+      <label for="chateau" class="font-bold">{t.chateau}<Req /></label>
+      <select id="chateau" name="chateau" required class={field}>
+        <option value="">{t.chateauPlaceholder}</option>
+        {chateaux.map((c) => <option value={c.slug}>{c.fr.name}</option>)}
+      </select>
+    </div>
+
+    <fieldset class="sm:col-span-2">
+      <legend class="font-bold">{t.formula}<Req /></legend>
+      <div class="mt-2 grid gap-3 sm:grid-cols-2">
+        <label class={radio}><input type="radio" name="formule" value="journee" required checked class="h-5 w-5 accent-[#b3341c]" />{t.formulaDay}</label>
+        <label class={radio}><input type="radio" name="formule" value="week-end" class="h-5 w-5 accent-[#b3341c]" />{t.formulaWeekend}</label>
+      </div>
+    </fieldset>
+
+    <div class="sm:col-span-2">
+      <label for="date" class="font-bold">{t.date}<Req /></label>
+      <p id="date-hint" class="text-sm text-muted">{t.dateHint}</p>
+      <input id="date" name="date" type="date" required class={field} aria-describedby="date-hint date-error date-blocked" />
+      <p id="date-error" class="mt-2 hidden font-bold text-accent-ink" aria-live="polite"></p>
+      <div id="date-blocked" class="mt-3 hidden rounded-2xl bg-cream p-4 text-sm">
+        <p class="font-bold">{t.unavailableListLabel}</p>
+        <ul class="mt-1 flex flex-wrap gap-x-4 gap-y-1"></ul>
+      </div>
+    </div>
+
+    <div class="sm:col-span-2">
+      <label for="commune" class="font-bold">{t.commune}<Req /></label>
+      <select id="commune" name="commune" required class={field}>
+        <option value="">{t.communePlaceholder}</option>
+        {communes.map((c) => <option value={c.slug}>{c.name} ({c.postalCode})</option>)}
+        <option value="autre">{t.communeOther}</option>
+      </select>
+    </div>
+
+    <fieldset class="sm:col-span-2">
+      <legend class="font-bold">{t.ground}<Req /></legend>
+      <div class="mt-2 grid gap-3 sm:grid-cols-2">
+        <label class={radio}><input type="radio" name="sol" value="herbe" required class="h-5 w-5 accent-[#b3341c]" />{t.groundGrass}</label>
+        <label class={radio}><input type="radio" name="sol" value="dur" class="h-5 w-5 accent-[#b3341c]" />{t.groundHard}</label>
+      </div>
+    </fieldset>
+
+    {[{ name: 'acces', legend: t.access }, { name: 'prise', legend: t.power }].map((q) => (
+      <fieldset class="sm:col-span-2" data-check>
+        <legend class="font-bold">{q.legend}<Req /></legend>
+        <div class="mt-2 grid gap-3 sm:grid-cols-3">
+          {yesNo.map((o, i) => (
+            <label class={radio}><input type="radio" name={q.name} value={o.value} required={i === 0} class="h-5 w-5 accent-[#b3341c]" />{o.label}</label>
+          ))}
+        </div>
+        <p class="check-warning mt-2 hidden rounded-2xl bg-sun/60 p-3 text-sm" aria-live="polite">{t.checkWarning}</p>
+      </fieldset>
+    ))}
+
+    <div>
+      <label for="nom" class="font-bold">{t.name}<Req /></label>
+      <input id="nom" name="nom" type="text" required autocomplete="name" class={field} />
+    </div>
+    <div>
+      <label for="telephone" class="font-bold">{t.phone}<Req /></label>
+      <input id="telephone" name="telephone" type="tel" required autocomplete="tel" inputmode="tel" class={field} aria-describedby="tel-hint" />
+      <p id="tel-hint" class="mt-1 text-sm text-muted">{t.phoneHint}</p>
+    </div>
+    <div class="sm:col-span-2">
+      <label for="email" class="font-bold">{t.email}</label>
+      <input id="email" name="email" type="email" autocomplete="email" class={field} />
+    </div>
+    <div class="sm:col-span-2">
+      <label for="message" class="font-bold">{t.message}</label>
+      <p id="msg-hint" class="text-sm text-muted">{t.messageHint}</p>
+      <textarea id="message" name="message" rows="5" class={field} aria-describedby="msg-hint"></textarea>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-3">
+    <button type="submit" class="btn-primary w-full sm:w-auto sm:self-start">{t.submit}</button>
+    <p class="text-sm text-muted">{t.privacy} <a href={r.confidentialite}>{t.privacyLink}</a></p>
+  </div>
+
+  <div class="rounded-3xl bg-cream p-6">
+    <p class="text-lg font-extrabold">{t.orWhatsapp}</p>
+    <p class="mt-1 text-muted">{t.whatsappText}</p>
+    <a id="wa-link" href={whatsappUrl(t.whatsappIntro)} class="btn-whatsapp mt-4" rel="noopener" target="_blank">
+      {ui(locale).cta.whatsapp}<span class="sr-only"> (nouvelle fenêtre)</span>
+    </a>
+  </div>
+</form>
+
+<script is:inline type="application/json" id="booking-data" set:html={JSON.stringify({ availability, messages, whatsapp: site.contact.whatsappE164, demo: site.demo, merci: r.merci })}></script>
+
+<script>
+  type Avail = Record<string, { name: string; dates: string[]; labels: Record<string, string> }>;
+  const data = JSON.parse(document.getElementById('booking-data')!.textContent!) as {
+    availability: Avail;
+    messages: Record<string, string> & { labels: Record<string, string> };
+    whatsapp: string;
+    demo: boolean;
+    merci: string;
+  };
+  const m = data.messages;
+  const form = document.getElementById('booking-form') as HTMLFormElement;
+  const chateau = form.querySelector<HTMLSelectElement>('#chateau')!;
+  const commune = form.querySelector<HTMLSelectElement>('#commune')!;
+  const date = form.querySelector<HTMLInputElement>('#date')!;
+  const dateError = form.querySelector<HTMLElement>('#date-error')!;
+  const blocked = form.querySelector<HTMLElement>('#date-blocked')!;
+  const summary = form.querySelector<HTMLElement>('#error-summary')!;
+  const wa = document.getElementById('wa-link') as HTMLAnchorElement;
+
+  const iso = (d: Date) => d.toISOString().slice(0, 10);
+  const addDays = (s: string, n: number) => {
+    const d = new Date(`${s}T00:00:00Z`);
+    d.setUTCDate(d.getUTCDate() + n);
+    return iso(d);
+  };
+  const tomorrow = () => {
+    const d = new Date();
+    d.setDate(d.getDate() + 1);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  };
+  date.min = tomorrow();
+
+  // Préremplissage depuis l'URL : /reserver/?chateau=jungle&commune=uccle
+  const params = new URLSearchParams(location.search);
+  for (const [key, el] of [['chateau', chateau], ['commune', commune]] as const) {
+    const v = params.get(key);
+    if (v && [...el.options].some((o) => o.value === v)) el.value = v;
+  }
+
+  const formula = () => (form.querySelector<HTMLInputElement>('input[name="formule"]:checked')?.value ?? 'journee');
+
+  function dateProblem(): string {
+    const v = date.value;
+    if (!v) return '';
+    if (v < date.min) return m.datePast!;
+    const a = data.availability[chateau.value];
+    if (formula() === 'week-end') {
+      if (new Date(`${v}T00:00:00Z`).getUTCDay() !== 5) return m.dateNotFriday!;
+      if (a && [0, 1, 2, 3].some((n) => a.dates.includes(addDays(v, n)))) return m.dateWeekendUnavailable!;
+    } else if (a?.dates.includes(v)) {
+      return m.dateUnavailable!;
+    }
+    return '';
+  }
+
+  function checkDate() {
+    const p = dateProblem();
+    date.setCustomValidity(p);
+    date.setAttribute('aria-invalid', p ? 'true' : 'false');
+    dateError.textContent = p;
+    dateError.classList.toggle('hidden', !p);
+  }
+
+  function renderBlocked() {
+    const a = data.availability[chateau.value];
+    const list = blocked.querySelector('ul')!;
+    list.innerHTML = '';
+    if (!a) return blocked.classList.add('hidden');
+    const upcoming = a.dates.filter((d) => d >= date.min);
+    if (upcoming.length === 0) {
+      const li = document.createElement('li');
+      li.textContent = m.unavailableNone!;
+      list.append(li);
+    }
+    for (const d of upcoming) {
+      const li = document.createElement('li');
+      li.textContent = a.labels[d] ?? d;
+      list.append(li);
+    }
+    blocked.classList.remove('hidden');
+  }
+
+  function updateWarnings() {
+    form.querySelectorAll<HTMLFieldSetElement>('[data-check]').forEach((fs) => {
+      const v = fs.querySelector<HTMLInputElement>('input:checked')?.value;
+      fs.querySelector('.check-warning')!.classList.toggle('hidden', !v || v === 'oui');
+    });
+  }
+
+  function whatsappText() {
+    const fd = new FormData(form);
+    const optText = (sel: HTMLSelectElement) => (sel.value ? sel.selectedOptions[0]!.text : '');
+    const radioText = (name: string) =>
+      form.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`)?.parentElement?.textContent?.trim() ?? '';
+    const rows: [string, string][] = [
+      [m.labels.chateau!, optText(chateau)],
+      [m.labels.formula!, radioText('formule')],
+      [m.labels.date!, String(fd.get('date') ?? '')],
+      [m.labels.commune!, optText(commune)],
+      [m.labels.ground!, radioText('sol')],
+      [m.labels.access!, radioText('acces')],
+      [m.labels.power!, radioText('prise')],
+      [m.labels.name!, String(fd.get('nom') ?? '')],
+      [m.labels.message!, String(fd.get('message') ?? '')],
+    ];
+    return [m.whatsappIntro, '', ...rows.filter(([, v]) => v).map(([k, v]) => `• ${k} : ${v}`)].join('\n');
+  }
+
+  function updateWa() {
+    const n = data.whatsapp.replace(/\D/g, '');
+    wa.href = `https://wa.me/${n}?text=${encodeURIComponent(whatsappText())}`;
+  }
+
+  form.addEventListener('change', () => {
+    renderBlocked();
+    checkDate();
+    updateWarnings();
+    updateWa();
+  });
+  form.addEventListener('input', updateWa);
+
+  // Validation accessible : récapitulatif des erreurs en haut, focus dessus
+  form.noValidate = true;
+  form.addEventListener('submit', (e) => {
+    checkDate();
+    const invalid = [...form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input, select, textarea')]
+      .filter((el) => el.name !== 'bot-field' && !el.checkValidity());
+    const seen = new Set<string>();
+    const ul = summary.querySelector('ul')!;
+    ul.innerHTML = '';
+    for (const el of invalid) {
+      if (seen.has(el.name)) continue;
+      seen.add(el.name);
+      const label =
+        el.type === 'radio'
+          ? el.closest('fieldset')?.querySelector('legend')?.textContent
+          : form.querySelector(`label[for="${el.id}"]`)?.textContent;
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = `#${el.id || el.name}`;
+      a.textContent = `${(label ?? el.name).replace('*', '').trim()} : ${el.validationMessage}`;
+      a.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        el.focus();
+      });
+      li.append(a);
+      ul.append(li);
+      el.setAttribute('aria-invalid', 'true');
+    }
+    if (invalid.length) {
+      e.preventDefault();
+      summary.classList.remove('hidden');
+      summary.focus();
+    } else {
+      summary.classList.add('hidden');
+      // Mode démo (GitHub Pages ne reçoit pas les formulaires) : on simule l'envoi
+      if (data.demo) {
+        e.preventDefault();
+        location.href = data.merci;
+      }
+    }
+  });
+
+  renderBlocked();
+  updateWa();
+</script>

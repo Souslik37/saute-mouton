@@ -1,0 +1,47 @@
+---
+import Logo from './Logo.astro';
+import { site } from '../lib/data';
+import { ui, routes, DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+interface Props { locale?: Locale }
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = ui(locale).nav;
+const r = routes(locale);
+const links = [
+  { href: r.chateaux, label: t.chateaux },
+  { href: `${r.home}#zone`, label: t.zone },
+  { href: r.faq, label: t.faq },
+  { href: r.about, label: t.about },
+];
+const path = Astro.url.pathname;
+const current = (href: string) => (href !== r.home && !href.includes('#') && path.startsWith(href) ? 'page' : undefined);
+---
+<header class="sticky top-0 z-40 border-b-2 border-accent-soft bg-white/95 backdrop-blur">
+  <div class="container-x flex h-16 items-center justify-between gap-4">
+    <a href={r.home} class="flex items-center gap-2.5 font-display text-2xl font-extrabold tracking-tight text-ink no-underline">
+      <Logo class="h-10 w-10" />
+      {site.name}
+    </a>
+    <nav aria-label={t.mainLabel} class="hidden md:block">
+      <ul class="flex items-center gap-1">
+        {links.map((l) => (
+          <li><a href={l.href} aria-current={current(l.href)} class="rounded-full px-4 py-2 font-semibold text-ink no-underline hover:bg-accent-soft aria-[current=page]:bg-accent-soft aria-[current=page]:text-accent-ink">{l.label}</a></li>
+        ))}
+        <li class="ml-3"><a href={r.reserver} class="btn-primary !min-h-11 !px-5 !py-2 !text-base">{t.book}</a></li>
+      </ul>
+    </nav>
+    <details class="group relative md:hidden">
+      <summary class="flex min-h-12 cursor-pointer list-none items-center gap-2 rounded-full bg-accent-soft px-4 font-bold text-accent-ink [&::-webkit-details-marker]:hidden">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" /></svg>
+        {t.menu}
+      </summary>
+      <nav aria-label={t.mainLabel} class="absolute right-0 mt-2 w-64 rounded-3xl border-2 border-line bg-white p-3 shadow-lg">
+        <ul class="flex flex-col">
+          {links.map((l) => (
+            <li><a href={l.href} aria-current={current(l.href)} class="block rounded-2xl px-4 py-3 text-lg font-semibold text-ink no-underline hover:bg-accent-soft">{l.label}</a></li>
+          ))}
+          <li class="mt-2"><a href={r.reserver} class="btn-primary w-full">{t.book}</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

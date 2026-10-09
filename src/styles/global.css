@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/figtree';
+
+/* Palette « prairie » : blanc laine + verts d'herbe. Contrastes vérifiés (WCAG AA). */
+@theme {
+  --font-sans: 'Figtree Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Figtree Variable', system-ui, sans-serif;
+  --color-wool: #ffffff;
+  --color-cream: #f4f8ef;        /* blanc cassé verdâtre, fonds de section */
+  --color-ink: #102a1c;          /* vert forêt presque noir, texte */
+  --color-muted: #4b5e52;        /* texte secondaire (6,9:1 sur blanc) */
+  --color-accent: #1d7a3e;       /* vert herbe : boutons, texte blanc dessus (5,4:1) */
+  --color-accent-ink: #17693a;   /* liens sur fond clair (6,7:1) */
+  --color-accent-soft: #e3f3dc;  /* vert tendre, puces et encarts */
+  --color-meadow: #8bd17c;       /* herbe claire, décor (texte ink dessus : 8,4:1) */
+  --color-forest: #123d25;       /* pied de page, bandeaux sombres */
+  --color-sun: #ffe27a;
+  --color-line: #dce7d5;
+  --radius-blob: 1.75rem;
+}
+
+@layer base {
+  html { @apply bg-wool text-ink antialiased; scroll-padding-top: 5rem; }
+  body { @apply font-sans text-[1.0625rem] leading-relaxed; }
+  h1, h2, h3 { @apply font-display font-extrabold tracking-tight text-balance; }
+  a { @apply text-accent-ink underline underline-offset-4 decoration-2 decoration-meadow; }
+  a:hover { @apply decoration-accent-ink; }
+  :focus-visible { outline: 3px solid var(--color-ink); outline-offset: 3px; border-radius: 0.5rem; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+}
+
+@utility container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+@utility btn {
+  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 py-3 font-display text-lg font-bold no-underline transition;
+}
+@utility btn-primary { @apply btn bg-accent text-white hover:bg-forest; }
+@utility btn-secondary { @apply btn border-2 border-accent bg-white text-accent-ink hover:bg-accent-soft; }
+@utility btn-whatsapp { @apply btn bg-[#1F7A4D] text-white hover:bg-[#17603C]; }
+@utility card { @apply rounded-[var(--radius-blob)] border-2 border-line bg-white; }
+@utility eyebrow { @apply inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1 text-sm font-bold text-accent-ink; }
+@utility ph {
+  @apply rounded bg-sun px-1 font-bold text-ink;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+@layer components {
+  .prose-legal h2 { @apply mt-10 mb-3 text-2xl; }
+  .prose-legal p, .prose-legal ul { @apply mb-4; }
+  .prose-legal ul { @apply list-disc pl-6 marker:text-accent; }
+  .prose-legal li { @apply mb-1; }
+}

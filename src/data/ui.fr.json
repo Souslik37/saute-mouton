@@ -1,0 +1,208 @@
+{
+  "lang": "fr-BE",
+  "ogLocale": "fr_BE",
+  "skipToContent": "Aller au contenu",
+  "nav": {
+    "home": "Accueil",
+    "chateaux": "Châteaux",
+    "zone": "Zone desservie",
+    "faq": "FAQ",
+    "about": "À propos",
+    "book": "Réserver",
+    "menu": "Menu",
+    "mainLabel": "Navigation principale",
+    "footerLabel": "Liens du pied de page"
+  },
+  "cta": {
+    "seeChateaux": "Voir les châteaux",
+    "book": "Demander une date",
+    "bookThis": "Réserver ce château",
+    "whatsapp": "Écrire sur WhatsApp",
+    "details": "Voir la fiche",
+    "allFaq": "Toutes les questions",
+    "conditions": "Lire les conditions de location",
+    "finalTitle": "Prêt à faire sauter les moutons ?",
+    "finalText": "Envoyez votre demande en deux minutes. Alex vous répond sous 24 heures."
+  },
+  "chateau": {
+    "dimensions": "Dimensions (L × l × H)",
+    "space": "Espace requis au sol",
+    "age": "Âge",
+    "ageValue": "{min} à {max} ans",
+    "capacity": "Capacité",
+    "capacityValue": "{n} enfants à la fois",
+    "maxHeight": "Taille maximale",
+    "power": "Électricité",
+    "certification": "Norme",
+    "priceDay": "La journée",
+    "priceWeekend": "Le week-end",
+    "from": "À partir de",
+    "included": "Ce qui est inclus",
+    "idealFor": "Idéal pour",
+    "specsTitle": "Caractéristiques",
+    "pricesTitle": "Tarifs",
+    "others": "Les autres châteaux",
+    "gallery": "Photos",
+    "breadcrumb": "Fil d'Ariane"
+  },
+  "home": {
+    "promiseTitle": "Ce que Saute-Mouton vous promet",
+    "stepsTitle": "Comment ça se passe",
+    "chateauxTitle": "Le troupeau",
+    "chateauxIntro": "Chaque fiche indique l'espace nécessaire, l'âge conseillé et les tarifs. Pas de surprise le jour J.",
+    "zoneTitle": "Zone desservie",
+    "zoneIntro": "Livraison au forfait de 15 € dans ces dix communes du sud de Bruxelles et du Brabant :",
+    "faqTitle": "Questions fréquentes",
+    "heroEyebrow": "Uccle · Ixelles · Waterloo · La Hulpe et alentours"
+  },
+  "commune": {
+    "h1": "Location de château gonflable à {name}",
+    "lead": "Livraison, installation et reprise à {name} ({cp}) par Alex, au départ d'Uccle.",
+    "chateauxTitle": "Châteaux disponibles à {name}",
+    "practicalTitle": "Infos pratiques",
+    "tipTitle": "Le conseil d'Alex",
+    "nearbyTitle": "Communes voisines desservies",
+    "deliveryLabel": "Livraison à {name}"
+  },
+  "form": {
+    "title": "Votre demande",
+    "intro": "Tous les champs marqués d'un astérisque sont obligatoires. Ce n'est pas encore une réservation : Alex vous confirme la disponibilité sous 24 heures.",
+    "required": "obligatoire",
+    "name": "Votre prénom et nom",
+    "phone": "Téléphone",
+    "phoneHint": "Pour vous rappeler ou vous écrire sur WhatsApp.",
+    "email": "E-mail (facultatif)",
+    "chateau": "Château",
+    "chateauPlaceholder": "Choisissez un château",
+    "formula": "Formule",
+    "formulaDay": "Journée",
+    "formulaWeekend": "Week-end (vendredi → lundi)",
+    "date": "Date de la fête",
+    "dateHint": "Pour le week-end, choisissez le vendredi de livraison.",
+    "dateUnavailable": "Ce château est déjà réservé à cette date. Choisissez une autre date ou un autre château.",
+    "datePast": "Choisissez une date à partir de demain.",
+    "dateNotFriday": "Pour la formule week-end, choisissez le vendredi de livraison.",
+    "dateWeekendUnavailable": "Ce château n'est pas libre sur tout ce week-end. Choisissez un autre vendredi ou un autre château.",
+    "unavailableListLabel": "Dates déjà réservées pour ce château :",
+    "unavailableNone": "Aucune date bloquée pour l'instant.",
+    "commune": "Commune",
+    "communePlaceholder": "Choisissez votre commune",
+    "communeOther": "Autre commune (préciser dans le message)",
+    "ground": "Type de sol",
+    "groundGrass": "Herbe",
+    "groundHard": "Sol dur (pavés, béton…)",
+    "access": "Le passage jusqu'à l'emplacement fait-il au moins 1 m de large ?",
+    "power": "Y a-t-il une prise électrique à moins de 25 m ?",
+    "yes": "Oui",
+    "no": "Non",
+    "unsure": "Je ne sais pas",
+    "checkWarning": "Pas de souci : précisez la situation dans le message, Alex trouvera une solution avec vous ou vous dira honnêtement si ce n'est pas possible.",
+    "message": "Message",
+    "messageHint": "Occasion, nombre d'enfants, horaires souhaités, particularités du terrain…",
+    "submit": "Envoyer ma demande",
+    "orWhatsapp": "Vous préférez WhatsApp ?",
+    "whatsappText": "Le bouton ci-dessous ouvre WhatsApp avec votre demande pré-remplie.",
+    "whatsappIntro": "Bonjour Alex, je souhaite réserver un château gonflable.",
+    "privacy": "Vos données servent uniquement à traiter votre demande.",
+    "privacyLink": "Politique de confidentialité",
+    "errorSummary": "Le formulaire contient des erreurs :"
+  },
+  "pages": {
+    "home": {
+      "title": "Location de château gonflable à Uccle et au sud de Bruxelles | Saute-Mouton",
+      "description": "Châteaux gonflables livrés, installés et repris à Uccle, Ixelles, Waterloo, La Hulpe et alentours. Matériel certifié EN 14960, un seul interlocuteur : Alex.",
+      "h1": "Des châteaux gonflables, et zéro corvée",
+      "lead": "Saute-Mouton livre, installe et reprend votre château gonflable au sud de Bruxelles. Vous préparez le gâteau, Alex s'occupe du reste."
+    },
+    "chateaux": {
+      "title": "Nos châteaux gonflables à louer : dimensions et prix | Saute-Mouton",
+      "description": "Tous les châteaux gonflables Saute-Mouton : dimensions, espace requis, âge conseillé, capacité et prix à la journée ou au week-end. Livraison au sud de Bruxelles.",
+      "h1": "Les châteaux gonflables",
+      "lead": "Trois châteaux pour commencer, des tout-petits aux grands. Comparez l'espace requis avec votre jardin avant de choisir."
+    },
+    "chateau": {
+      "title": "{name} : location château gonflable {min}–{max} ans | Saute-Mouton",
+      "description": "{name} : {length} × {width} m, {min} à {max} ans, {capacity} enfants. {priceDay} € la journée, {priceWeekend} € le week-end, installation et reprise incluses."
+    },
+    "commune": {
+      "title": "Location château gonflable à {name} ({cp}) | Saute-Mouton"
+    },
+    "reserver": {
+      "title": "Réserver un château gonflable : demande de date | Saute-Mouton",
+      "description": "Demandez une date pour votre château gonflable : formulaire en deux minutes ou WhatsApp. Réponse d'Alex sous 24 heures, sans paiement en ligne.",
+      "h1": "Demander une date",
+      "lead": "Remplissez le formulaire ou écrivez directement sur WhatsApp. Alex vérifie la disponibilité et vous répond sous 24 heures."
+    },
+    "merci": {
+      "title": "Demande envoyée | Saute-Mouton",
+      "description": "Votre demande de réservation a bien été envoyée.",
+      "h1": "Merci, votre demande est envoyée",
+      "lead": "Alex vous répond sous 24 heures par téléphone, WhatsApp ou e-mail. Pensez à vérifier vos courriers indésirables.",
+      "back": "Retour à l'accueil"
+    },
+    "about": {
+      "title": "À propos : Alex, votre interlocuteur unique | Saute-Mouton",
+      "description": "Saute-Mouton, c'est Alex, basé à Uccle : pourquoi ce projet et quels engagements de sécurité pour chaque location de château gonflable.",
+      "h1": "Bonjour, c'est Alex",
+      "photoAlt": "[PHOTO D'ALEX] Portrait d'Alex, fondateur de Saute-Mouton",
+      "whyTitle": "Pourquoi Saute-Mouton",
+      "why": [
+        "[POURQUOI CE PROJET : 2 à 4 phrases écrites par Alex, à la première personne.]",
+        "[CE QUI DIFFÉRENCIE SAUTE-MOUTON SELON ALEX : par exemple le fait d'être un seul interlocuteur, du début à la fin.]"
+      ],
+      "safetyTitle": "Mes engagements sécurité",
+      "safety": [
+        "Uniquement du matériel conforme à la norme européenne EN 14960.",
+        "Un contrôle visuel complet (coutures, ancrages, souffleur) avant chaque location.",
+        "Installation et ancrage toujours réalisés par moi, jamais laissés au client.",
+        "Une fiche de consignes de sécurité remise et expliquée à chaque installation.",
+        "Pas d'installation si le vent dépasse le seuil de sécurité du fabricant : je préfère reporter que prendre un risque.",
+        "Nettoyage et désinfection des surfaces de jeu après chaque location."
+      ]
+    },
+    "faq": {
+      "title": "Questions fréquentes sur la location de château gonflable | Saute-Mouton",
+      "description": "Espace nécessaire, électricité, sol dur, pluie, vent, surveillance, réservation : les réponses aux questions fréquentes sur la location de château gonflable.",
+      "h1": "Questions fréquentes",
+      "lead": "Une question qui n'est pas ici ? Écrivez à Alex, il vous répond directement."
+    },
+    "conditions": {
+      "title": "Conditions de location : pluie, vent, caution, annulation | Saute-Mouton",
+      "description": "Conditions de location des châteaux gonflables Saute-Mouton : réservation, livraison, pluie, vent, caution, annulation et responsabilités.",
+      "h1": "Conditions de location"
+    },
+    "mentions": {
+      "title": "Mentions légales | Saute-Mouton",
+      "description": "Mentions légales du site Saute-Mouton : éditeur, numéro d'entreprise, hébergement.",
+      "h1": "Mentions légales"
+    },
+    "confidentialite": {
+      "title": "Politique de confidentialité | Saute-Mouton",
+      "description": "Comment Saute-Mouton traite vos données personnelles : données collectées, finalités, durée de conservation et vos droits. Aucun cookie.",
+      "h1": "Politique de confidentialité"
+    },
+    "notFound": {
+      "title": "Page introuvable | Saute-Mouton",
+      "description": "Cette page n'existe pas ou a été déplacée.",
+      "h1": "Cette page a sauté la clôture",
+      "lead": "Elle n'existe pas ou a été déplacée.",
+      "back": "Retour à l'accueil"
+    }
+  },
+  "footer": {
+    "zoneTitle": "Zone desservie",
+    "contactTitle": "Contact",
+    "legalTitle": "Infos légales",
+    "conditions": "Conditions de location",
+    "mentions": "Mentions légales",
+    "confidentialite": "Confidentialité",
+    "bce": "N° BCE",
+    "noCookies": "Ce site n'utilise aucun cookie."
+  },
+  "common": {
+    "currencySuffix": "€",
+    "tvac": "TVAC",
+    "m": "m",
+    "cm": "cm"
+  }
+}

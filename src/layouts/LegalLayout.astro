@@ -1,0 +1,12 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { markPlaceholders } from '../lib/format';
+interface Props { title: string; description: string; h1: string; noindex?: boolean }
+const { title, description, h1, noindex } = Astro.props;
+const html = markPlaceholders(await Astro.slots.render('default'));
+---
+<BaseLayout title={title} description={description} noindex={noindex}>
+  <PageHeader title={h1} />
+  <article class="container-x prose-legal max-w-3xl" set:html={html} />
+</BaseLayout>

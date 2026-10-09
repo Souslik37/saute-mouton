@@ -1,0 +1,18 @@
+---
+import { site } from '../lib/data';
+const icons = [
+  'M5 12l4 4L19 6',
+  'M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z',
+  'M12 12a4 4 0 100-8 4 4 0 000 8zm-7 9a7 7 0 0114 0',
+];
+---
+<ul class="grid gap-3 sm:grid-cols-3" role="list">
+  {site.fr.promise.map((p, i) => (
+    <li class="flex items-start gap-3">
+      <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-white" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d={icons[i % icons.length]} /></svg>
+      </span>
+      <div><p class="font-display font-bold">{p.title}</p><p class="text-sm text-muted">{p.text}</p></div>
+    </li>
+  ))}
+</ul>

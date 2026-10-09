@@ -1,0 +1,38 @@
+---
+import { Picture } from 'astro:assets';
+import { chateauImage, type Chateau } from '../lib/data';
+import { ui, routes, tpl, DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { price, dims } from '../lib/format';
+interface Props { chateau: Chateau; locale?: Locale; headingLevel?: 'h2' | 'h3'; eager?: boolean }
+const { chateau: c, locale = DEFAULT_LOCALE, headingLevel = 'h3', eager = false } = Astro.props;
+const t = ui(locale).chateau;
+const H = headingLevel;
+const href = routes(locale).chateau(c.slug);
+---
+<article class="group relative flex flex-col overflow-hidden rounded-[var(--radius-blob)] bg-cream transition hover:bg-accent-soft">
+  <div class="p-3 pb-0">
+    <Picture
+      src={chateauImage(c.images[0]!)}
+      alt={c.fr.imageAlts[0]!}
+      formats={['avif', 'webp']}
+      widths={[400, 640, 960]}
+      sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+      class="aspect-[4/3] w-full rounded-[1.25rem] object-cover"
+      loading={eager ? 'eager' : 'lazy'}
+    />
+  </div>
+  <div class="flex flex-1 flex-col gap-3 p-6">
+    <div class="flex flex-wrap gap-2 text-sm font-semibold">
+      <span class="rounded-full bg-white px-3 py-1">{tpl(t.ageValue, { min: c.ageMin, max: c.ageMax })}</span>
+      <span class="rounded-full bg-white px-3 py-1">{dims(c.spaceRequired)}</span>
+    </div>
+    <H class="text-2xl">
+      <a href={href} class="text-ink no-underline after:absolute after:inset-0 group-hover:underline">{c.fr.name}</a>
+    </H>
+    <p class="text-muted">{c.fr.short}</p>
+    <p class="mt-auto flex items-baseline justify-between border-t-2 border-dashed border-line pt-4">
+      <span class="text-muted">{t.from}</span>
+      <strong class="font-display text-2xl font-extrabold text-accent-ink">{price(c.priceDay)}</strong>
+    </p>
+  </div>
+</article>

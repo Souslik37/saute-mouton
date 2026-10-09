@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ChateauGrid from '../components/ChateauGrid.astro';
+import CommuneList from '../components/CommuneList.astro';
+import Steps from '../components/Steps.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site, chateaux, communes, type Commune } from '../lib/data';
+import { ui, routes, tpl } from '../lib/i18n';
+import { breadcrumb } from '../lib/jsonld';
+
+export function getStaticPaths() {
+  return communes.map((c) => ({ params: { commune: c.slug }, props: { commune: c } }));
+}
+interface Props { commune: Commune }
+const { commune: c } = Astro.props;
+const t = ui();
+const tc = t.commune;
+const r = routes();
+const v = { name: c.name, cp: c.postalCode };
+const nearby = c.nearby.map((s) => communes.find((x) => x.slug === s)!);
+const crumbs = [
+  { name: t.nav.home, path: r.home },
+  { name: t.nav.zone, path: `${r.home}#zone` },
+  { name: c.name, path: r.commune(c.slug) },
+];
+---
+<BaseLayout
+  title={tpl(t.pages.commune.title, v)}
+  description={c.fr.metaDescription}
+  jsonLd={[breadcrumb(crumbs.filter((x) => !x.path.includes('#')))]}
+>
+  <PageHeader title={tpl(tc.h1, v)} lead={tpl(tc.lead, v)} eyebrow={`${c.postalCode} · ${c.region}`}>
+    <Breadcrumb slot="before" items={[crumbs[0]!, { name: c.name }]} />
+    <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+      <a href={`${r.reserver}?commune=${c.slug}`} class="btn-primary">{t.cta.book}</a>
+      <a href={r.chateaux} class="btn-secondary">{t.cta.seeChateaux}</a>
+    </div>
+  </PageHeader>
+
+  <div class="container-x grid gap-8 lg:grid-cols-[1.5fr_1fr]">
+    <section aria-labelledby="pratique" class="card p-7 sm:p-9">
+      <h2 id="pratique" class="text-2xl">{tc.practicalTitle}</h2>
+      <p class="mt-4 text-lg">{c.fr.intro}</p>
+    </section>
+    <aside class="flex flex-col gap-6">
+      <section aria-labelledby="conseil" class="rounded-[var(--radius-blob)] bg-accent-soft p-7">
+        <h2 id="conseil" class="text-xl">{tc.tipTitle}</h2>
+        <p class="mt-3">{c.fr.tip}</p>
+      </section>
+      <section aria-labelledby="livraison" class="card p-7">
+        <h2 id="livraison" class="text-xl">{tpl(tc.deliveryLabel, v)}</h2>
+        <p class="mt-3 text-muted">{site.fr.deliveryNote} {site.fr.weekendNote}</p>
+      </section>
+    </aside>
+  </div>
+
+  <section class="container-x mt-16" aria-labelledby="chateaux-commune">
+    <h2 id="chateaux-commune" class="mb-6 text-3xl">{tpl(tc.chateauxTitle, v)}</h2>
+    <ChateauGrid items={chateaux} />
+  </section>
+
+  <section class="container-x mt-16" aria-labelledby="etapes">
+    <h2 id="etapes" class="mb-6 text-3xl">{t.home.stepsTitle}</h2>
+    <Steps />
+  </section>
+
+  <section class="container-x mt-16" aria-labelledby="voisines">
+    <h2 id="voisines" class="mb-5 text-2xl">{tc.nearbyTitle}</h2>
+    <CommuneList items={nearby} />
+  </section>
+
+  <CtaBand href={`${r.reserver}?commune=${c.slug}`} />
+</BaseLayout>

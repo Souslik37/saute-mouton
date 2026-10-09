@@ -1,0 +1,90 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Promise from '../components/Promise.astro';
+import Steps from '../components/Steps.astro';
+import ChateauGrid from '../components/ChateauGrid.astro';
+import CommuneList from '../components/CommuneList.astro';
+import FaqList from '../components/FaqList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import GrassWave from '../components/GrassWave.astro';
+import Sheep from '../components/Sheep.astro';
+import { site, chateaux, faq, asset } from '../lib/data';
+import { ui, routes } from '../lib/i18n';
+
+const t = ui();
+const r = routes();
+const p = t.pages.home;
+const homeFaq = faq.filter((f) => f.home).map((f) => ({ id: f.id, ...f.fr }));
+---
+<BaseLayout title={p.title} description={p.description}>
+  <section class="container-x grid items-center gap-10 pt-10 pb-6 sm:pt-16 lg:grid-cols-[1.05fr_1fr]">
+    <div>
+      <p class="eyebrow mb-5">
+        <svg viewBox="0 0 24 24" class="h-4 w-4" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor" /></svg>
+        {t.home.heroEyebrow}
+      </p>
+      <h1 class="text-[2.6rem] leading-[1.02] sm:text-6xl">{p.h1}</h1>
+      <p class="mt-5 max-w-xl text-xl text-muted">{p.lead}</p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href={r.reserver} class="btn-primary">{t.cta.book}</a>
+        <a href={r.chateaux} class="btn-secondary">{t.cta.seeChateaux}</a>
+      </div>
+      <p class="mt-5 text-sm text-muted">{site.fr.deliveryNote} {site.fr.priceNote}</p>
+    </div>
+    <div class="relative">
+      <Picture
+        src={asset('site/hero.jpg')}
+        alt=""
+        formats={['avif', 'webp']}
+        widths={[480, 720, 1080]}
+        sizes="(min-width: 1024px) 520px, 100vw"
+        class="aspect-[4/3] w-full rounded-[2rem] object-cover"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <Sheep class="absolute -bottom-6 -left-3 h-20 w-auto drop-shadow-sm sm:h-24" />
+    </div>
+  </section>
+
+  <GrassWave class="mt-8" />
+  <div class="bg-cream pb-20">
+    <section class="container-x pt-6" aria-labelledby="promise-title">
+      <h2 id="promise-title" class="sr-only">{t.home.promiseTitle}</h2>
+      <Promise />
+    </section>
+
+    <section class="container-x mt-16" aria-labelledby="steps-title">
+      <h2 id="steps-title" class="mb-8 text-3xl sm:text-4xl">{t.home.stepsTitle}</h2>
+      <Steps />
+    </section>
+  </div>
+  <GrassWave color="var(--color-cream)" flip />
+
+  <section class="container-x mt-10" aria-labelledby="chateaux-title">
+    <div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h2 id="chateaux-title" class="text-3xl sm:text-4xl">{t.home.chateauxTitle}</h2>
+        <p class="mt-2 max-w-xl text-muted">{t.home.chateauxIntro}</p>
+      </div>
+      <a href={r.chateaux} class="font-semibold">{t.cta.seeChateaux}</a>
+    </div>
+    <ChateauGrid items={chateaux} />
+  </section>
+
+  <section id="zone" class="container-x mt-20" aria-labelledby="zone-title">
+    <div class="rounded-[2rem] bg-accent-soft p-6 sm:p-10">
+      <h2 id="zone-title" class="text-3xl sm:text-4xl">{t.home.zoneTitle}</h2>
+      <p class="mt-2 mb-6 max-w-xl text-ink/80">{t.home.zoneIntro}</p>
+      <CommuneList />
+    </div>
+  </section>
+
+  <section class="container-x mt-20 max-w-3xl" aria-labelledby="faq-title">
+    <h2 id="faq-title" class="mb-6 text-3xl sm:text-4xl">{t.home.faqTitle}</h2>
+    <FaqList items={homeFaq} />
+    <p class="mt-5"><a href={r.faq} class="font-semibold">{t.cta.allFaq}</a></p>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

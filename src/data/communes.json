@@ -1,0 +1,122 @@
+[
+  {
+    "slug": "uccle",
+    "name": "Uccle",
+    "postalCode": "1180",
+    "region": "Bruxelles",
+    "nearby": ["forest", "ixelles", "watermael-boitsfort", "linkebeek", "rhode-saint-genese"],
+    "fr": {
+      "metaDescription": "Location de château gonflable à Uccle (1180) : livré, installé et repris par Alex, basé à Uccle. Matériel certifié EN 14960. Demande de date en ligne.",
+      "intro": "Saute-Mouton est basé à Uccle : c'est ici que les châteaux sont stockés, entretenus et chargés. Résultat, pour une fête dans un jardin du Vert Chasseur, de Saint-Job ou du Fort Jaco, le trajet est court et l'installation peut se caler tôt le matin sans difficulté. Beaucoup de jardins ucclois sont en pente douce ou bordés de grands arbres : au moment de la demande, indiquez-le dans le message, Alex vérifiera qu'une zone plane suffisante existe et choisira le château en conséquence. Si l'accès au jardin passe par un sentier latéral ou un garage, mesurez simplement le passage le plus étroit : un mètre suffit.",
+      "tip": "Jardin en pente ? Prenez une photo de la zone envisagée et envoyez-la sur WhatsApp : c'est le moyen le plus rapide d'avoir une réponse claire."
+    }
+  },
+  {
+    "slug": "forest",
+    "name": "Forest",
+    "postalCode": "1190",
+    "region": "Bruxelles",
+    "nearby": ["uccle", "ixelles"],
+    "fr": {
+      "metaDescription": "Château gonflable à louer à Forest (1190) : livraison 15 €, installation et reprise incluses. Idéal jardins de ville et cours intérieures. Réservez votre date.",
+      "intro": "À Forest, les fêtes se font souvent dans des jardins de maisons mitoyennes, parfois accessibles uniquement en traversant la maison. Ce n'est pas un problème : un château replié tient sur un diable et passe par une porte standard d'un mètre de large. Le Petit Pré est généralement le plus adapté à ces jardins en longueur ; pour une fête d'école ou de quartier sur un terrain plus dégagé, La Bergerie ou Le Grand Troupeau prennent le relais. Depuis Uccle, Forest est à quelques minutes, ce qui laisse de la souplesse sur l'heure d'installation.",
+      "tip": "Si le château doit traverser la maison, prévoyez de dégager le passage la veille : l'installation n'en sera que plus rapide."
+    }
+  },
+  {
+    "slug": "ixelles",
+    "name": "Ixelles",
+    "postalCode": "1050",
+    "region": "Bruxelles",
+    "nearby": ["uccle", "forest", "watermael-boitsfort"],
+    "fr": {
+      "metaDescription": "Location château gonflable à Ixelles (1050) : modèles compacts pour jardins de ville, livrés et installés par Alex. Prix TVAC, livraison 15 €.",
+      "intro": "Ixelles, c'est surtout des jardins de ville : souvent étroits, parfois en terrasse, presque toujours entourés de murs. Avant de choisir un château, mesurez la longueur et la largeur réellement libres (sans le barbecue ni le bac à sable) et comparez-les à l'« espace requis » indiqué sur chaque fiche. Le stationnement pour décharger peut être plus délicat qu'ailleurs : si vous pouvez réserver une place devant chez vous le jour J, l'installation sera plus rapide. Pour une crèche, une école ou un événement dans une cour intérieure, sol dur compris, Alex adapte l'ancrage avec des sacs de lest.",
+      "tip": "Sol en pavés ou en dalles ? Cochez « sol dur » dans le formulaire : l'ancrage se fera avec des sacs de lest au lieu de piquets."
+    }
+  },
+  {
+    "slug": "watermael-boitsfort",
+    "name": "Watermael-Boitsfort",
+    "postalCode": "1170",
+    "region": "Bruxelles",
+    "nearby": ["uccle", "ixelles", "la-hulpe", "rhode-saint-genese"],
+    "fr": {
+      "metaDescription": "Château gonflable à Watermael-Boitsfort (1170) : livraison, installation et reprise par Alex. Anniversaires, écoles, fêtes de quartier. Demandez une date.",
+      "intro": "Entre la forêt de Soignes et les cités-jardins, Watermael-Boitsfort compte beaucoup de jardins arborés et de pelouses partagées. Deux points à vérifier avant de réserver : l'absence de branches basses au-dessus de la zone d'installation (il faut de la hauteur libre au-dessus du château), et la présence d'une prise électrique à moins de 25 mètres. Pour une fête de rue ou un événement sur un espace commun, pensez à vous renseigner auprès de la commune ou du gestionnaire du lieu sur les autorisations nécessaires ; Alex peut vous fournir les dimensions et la fiche technique du château pour votre demande.",
+      "tip": "Sous de grands arbres, choisissez l'endroit le plus dégagé possible : la hauteur du château est indiquée sur chaque fiche."
+    }
+  },
+  {
+    "slug": "linkebeek",
+    "name": "Linkebeek",
+    "postalCode": "1630",
+    "region": "Brabant flamand",
+    "nearby": ["uccle", "rhode-saint-genese"],
+    "fr": {
+      "metaDescription": "Location de château gonflable à Linkebeek (1630), à deux pas d'Uccle : livraison 15 €, installation et reprise incluses. Matériel certifié EN 14960.",
+      "intro": "Linkebeek est juste de l'autre côté de la limite d'Uccle : c'est l'une des communes les plus proches du dépôt de Saute-Mouton. Les jardins y sont souvent vallonnés, avec des maisons construites à flanc de coteau. Le château doit être posé sur une surface plane : si votre pelouse est en pente, envoyez une photo avant de réserver pour choisir l'emplacement ensemble. Les rues étroites ne posent pas de problème particulier, mais indiquez dans votre message s'il faut porter le matériel par un escalier : cela aide à prévoir le bon temps d'installation.",
+      "tip": "Le site est pour l'instant en français ; une version néerlandaise est prévue."
+    }
+  },
+  {
+    "slug": "rhode-saint-genese",
+    "name": "Rhode-Saint-Genèse",
+    "postalCode": "1640",
+    "region": "Brabant flamand",
+    "nearby": ["uccle", "linkebeek", "waterloo", "watermael-boitsfort"],
+    "fr": {
+      "metaDescription": "Château gonflable à louer à Rhode-Saint-Genèse (1640) : grands jardins, livraison 15 €, installation et reprise par Alex. Demande de date en ligne.",
+      "intro": "À Rhode-Saint-Genèse, les jardins sont souvent grands et plats, ce qui ouvre la porte aux modèles les plus spacieux, y compris Le Grand Troupeau et ses 9 mètres d'obstacles. La vraie question est souvent celle de l'électricité : un château fonctionne en continu avec un souffleur, qui doit être branché sur une prise à moins de 25 mètres. Si la pelouse est loin de la maison, repérez une prise extérieure ou un garage. Pour une communion ou une fête de famille avec beaucoup d'enfants d'âges différents, combiner deux châteaux est possible selon les disponibilités.",
+      "tip": "Grand terrain et enfants d'âges variés ? Demandez dans le message si deux châteaux sont disponibles à la même date."
+    }
+  },
+  {
+    "slug": "waterloo",
+    "name": "Waterloo",
+    "postalCode": "1410",
+    "region": "Brabant wallon",
+    "nearby": ["rhode-saint-genese", "braine-l-alleud", "lasne", "la-hulpe"],
+    "fr": {
+      "metaDescription": "Location château gonflable à Waterloo (1410) : anniversaires, communions, écoles. Livré, installé et repris par Alex. Prix TVAC, livraison 15 €.",
+      "intro": "À Waterloo, Saute-Mouton installe aussi bien dans les jardins de villas que sur les terrains d'écoles, de clubs sportifs ou de mouvements de jeunesse. Pour un événement collectif, deux éléments facilitent l'organisation : un responsable présent sur place à l'arrivée d'Alex, et un accès véhicule aussi proche que possible de l'emplacement. Les cours en dur sont acceptées, avec ancrage par sacs de lest. La formule week-end, livrée le vendredi et reprise le lundi, est souvent la plus pratique pour les fêtes du samedi : pas de course contre la montre le matin même.",
+      "tip": "Pour une école ou un club, précisez le nombre d'enfants attendus : Alex vous conseillera le château et la rotation adaptés."
+    }
+  },
+  {
+    "slug": "braine-l-alleud",
+    "name": "Braine-l'Alleud",
+    "postalCode": "1420",
+    "region": "Brabant wallon",
+    "nearby": ["waterloo", "lasne"],
+    "fr": {
+      "metaDescription": "Château gonflable à Braine-l'Alleud (1420) : livraison 15 €, installation et reprise incluses, matériel EN 14960. Anniversaires et événements.",
+      "intro": "Braine-l'Alleud est la commune la plus éloignée de la zone desservie, mais la livraison reste au même forfait de 15 €. Comme le trajet est un peu plus long, il est utile de réserver tôt pour les week-ends de mai et juin, période des communions et des fêtes d'école. Les jardins y sont variés, du lotissement récent à la grande pelouse de campagne : comparez simplement l'espace libre avec l'« espace requis » de chaque fiche. Pour une installation sur un terrain agricole ou un pré, signalez-le : le sol doit être plat, sans pierres ni chardons.",
+      "tip": "Communion en mai ou juin ? Envoyez votre demande dès que la date est connue."
+    }
+  },
+  {
+    "slug": "lasne",
+    "name": "Lasne",
+    "postalCode": "1380",
+    "region": "Brabant wallon",
+    "nearby": ["waterloo", "la-hulpe", "braine-l-alleud"],
+    "fr": {
+      "metaDescription": "Location de château gonflable à Lasne (1380) : Ohain, Plancenoit, Maransart, Couture-Saint-Germain. Livré, installé et repris. Livraison 15 €.",
+      "intro": "Lasne regroupe plusieurs villages (Lasne-Chapelle-Saint-Lambert, Ohain, Plancenoit, Maransart, Couture-Saint-Germain) et beaucoup de propriétés avec de grands jardins. Ce qui compte ici, c'est l'accès : chemin de terre, allée en gravier ou portail étroit, précisez-le dans votre demande pour qu'Alex prévoie le bon matériel de transport. Les pelouses en légère pente sont fréquentes ; le château doit être posé à plat, donc repérez la zone la plus horizontale. Avec de la place, Le Grand Troupeau est un bon choix pour les fêtes avec des enfants plus âgés.",
+      "tip": "Indiquez votre village dans le message (Ohain, Plancenoit…) : cela aide à planifier la tournée."
+    }
+  },
+  {
+    "slug": "la-hulpe",
+    "name": "La Hulpe",
+    "postalCode": "1310",
+    "region": "Brabant wallon",
+    "nearby": ["watermael-boitsfort", "lasne", "waterloo"],
+    "fr": {
+      "metaDescription": "Château gonflable à louer à La Hulpe (1310) : livraison 15 €, installation et reprise par Alex. Jardins, écoles, clubs. Matériel certifié EN 14960.",
+      "intro": "À La Hulpe, Saute-Mouton intervient pour des anniversaires en jardin comme pour des événements de clubs ou d'associations. Les terrains de sport ont souvent une belle surface plane, mais la prise électrique la plus proche peut être dans un vestiaire ou une buvette : vérifiez qu'elle se trouve à moins de 25 mètres de l'emplacement prévu. Pour une fête en extérieur, gardez un plan B en tête : en cas de pluie forte ou de vent supérieur au seuil de sécurité, le château ne peut pas être utilisé, et les conditions de location expliquent ce qui se passe dans ce cas.",
+      "tip": "Événement de club ? Indiquez le nom du terrain et l'accès véhicule dans le message."
+    }
+  }
+]

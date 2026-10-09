@@ -1,0 +1,7 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { Content } from '../data/pages/conditions-de-location.fr.md';
+import { ui } from '../lib/i18n';
+const p = ui().pages.conditions;
+---
+<LegalLayout title={p.title} description={p.description} h1={p.h1}><Content /></LegalLayout>

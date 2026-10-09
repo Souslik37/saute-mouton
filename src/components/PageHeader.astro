@@ -1,0 +1,12 @@
+---
+import { rich } from '../lib/format';
+interface Props { title: string; lead?: string; eyebrow?: string }
+const { title, lead, eyebrow } = Astro.props;
+---
+<div class="container-x pt-10 pb-8 sm:pt-16">
+  <slot name="before" />
+  {eyebrow && <p class="eyebrow mb-3">{eyebrow}</p>}
+  <h1 class="max-w-3xl text-4xl sm:text-5xl">{title}</h1>
+  {lead && <p class="mt-4 max-w-2xl text-xl text-muted" set:html={rich(lead)} />}
+  <slot />
+</div>

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "inclus",
+    "home": true,
+    "fr": {
+      "q": "Qu'est-ce qui est compris dans le prix ?",
+      "a": "Le château, son souffleur, la bâche de protection, l'ancrage (piquets ou sacs de lest), une rallonge, l'installation et la reprise. Seule la livraison est facturée en plus : 15 € forfaitaires dans toute la zone desservie. Tous les prix sont TVAC."
+    }
+  },
+  {
+    "id": "espace",
+    "home": true,
+    "fr": {
+      "q": "De combien de place ai-je besoin ?",
+      "a": "Chaque fiche château indique l'« espace requis » : c'est la surface plane et dégagée nécessaire, marge de sécurité comprise. Il faut aussi un passage d'au moins 1 mètre de large pour amener le château jusqu'à l'emplacement, et de la hauteur libre (pas de branches ni de câbles au-dessus)."
+    }
+  },
+  {
+    "id": "sol",
+    "home": false,
+    "fr": {
+      "q": "Le château peut-il être installé sur un sol dur ?",
+      "a": "Oui. Sur herbe, il est ancré avec des piquets ; sur un sol dur (pavés, béton, cour d'école), avec des sacs de lest. Une bâche protège le château et le sol dans les deux cas. Le sol doit être plat et débarrassé des cailloux et objets pointus."
+    }
+  },
+  {
+    "id": "electricite",
+    "home": true,
+    "fr": {
+      "q": "Faut-il de l'électricité ?",
+      "a": "Oui : le souffleur fonctionne en continu pendant toute l'utilisation. Il faut une prise 230 V standard à moins de 25 mètres de l'emplacement (une rallonge est fournie). Le Grand Parcours demande deux prises sur des circuits séparés."
+    }
+  },
+  {
+    "id": "pluie",
+    "home": true,
+    "fr": {
+      "q": "Que se passe-t-il s'il pleut ou s'il y a du vent ?",
+      "a": "Le château ne peut pas être utilisé sous une pluie forte ni quand le vent dépasse le seuil de sécurité fixé par le fabricant. Les solutions (report, annulation, remboursement) sont détaillées dans les conditions de location."
+    }
+  },
+  {
+    "id": "surveillance",
+    "home": false,
+    "fr": {
+      "q": "Faut-il un adulte pour surveiller ?",
+      "a": "Oui, toujours. Un adulte doit être présent près du château pendant toute son utilisation. Alex vous remet une fiche de consignes à l'installation : nombre d'enfants maximum, pas de chaussures, pas de nourriture sur le château, séparation des petits et des grands."
+    }
+  },
+  {
+    "id": "duree-installation",
+    "home": false,
+    "fr": {
+      "q": "Combien de temps prend l'installation ?",
+      "a": "[DURÉE D'INSTALLATION, ex. 30 à 45 minutes selon le château]. Alex convient avec vous d'un créneau d'arrivée au moment de la confirmation."
+    }
+  },
+  {
+    "id": "reserver",
+    "home": true,
+    "fr": {
+      "q": "Comment réserver ?",
+      "a": "Envoyez une demande via le formulaire de réservation ou sur WhatsApp, avec la date, le château et votre commune. Alex vérifie la disponibilité et l'emplacement, puis confirme la réservation sous 24 heures. Il n'y a pas de paiement en ligne."
+    }
+  },
+  {
+    "id": "paiement",
+    "home": false,
+    "fr": {
+      "q": "Comment se passe le paiement ?",
+      "a": "[MODALITÉS DE PAIEMENT : acompte, virement, paiement le jour J…]. Une caution peut être demandée, voir les conditions de location."
+    }
+  },
+  {
+    "id": "certification",
+    "home": false,
+    "fr": {
+      "q": "Que signifie « certifié EN 14960 » ?",
+      "a": "EN 14960 est la norme européenne de sécurité pour les structures gonflables de jeu. Elle encadre notamment la conception, l'ancrage, les matériaux et les consignes d'utilisation. Les châteaux Saute-Mouton sont conformes à cette norme et contrôlés avant chaque location."
+    }
+  },
+  {
+    "id": "assurance",
+    "home": false,
+    "fr": {
+      "q": "Le matériel est-il assuré ?",
+      "a": "[INFORMATIONS SUR L'ASSURANCE RESPONSABILITÉ CIVILE DE L'EXPLOITANT]"
+    }
+  },
+  {
+    "id": "zone",
+    "home": false,
+    "fr": {
+      "q": "Livrez-vous en dehors de la zone ?",
+      "a": "La zone desservie couvre Uccle, Forest, Ixelles, Watermael-Boitsfort, Linkebeek, Rhode-Saint-Genèse, Waterloo, Braine-l'Alleud, Lasne et La Hulpe. Pour une autre commune proche, envoyez quand même votre demande : Alex vous dira si c'est possible."
+    }
+  }
+]

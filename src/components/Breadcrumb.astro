@@ -1,0 +1,15 @@
+---
+import { ui } from '../lib/i18n';
+interface Props { items: { name: string; path?: string }[] }
+const { items } = Astro.props;
+---
+<nav aria-label={ui().chateau.breadcrumb} class="mb-6 text-sm">
+  <ol class="flex flex-wrap items-center gap-2">
+    {items.map((i, n) => (
+      <li class="flex items-center gap-2">
+        {n > 0 && <span aria-hidden="true" class="text-muted">/</span>}
+        {i.path ? <a href={i.path}>{i.name}</a> : <span aria-current="page" class="font-bold">{i.name}</span>}
+      </li>
+    ))}
+  </ol>
+</nav>

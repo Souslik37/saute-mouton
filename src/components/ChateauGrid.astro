@@ -1,0 +1,10 @@
+---
+import ChateauCard from './ChateauCard.astro';
+import type { Chateau } from '../lib/data';
+import type { Locale } from '../lib/i18n';
+interface Props { items: Chateau[]; locale?: Locale; headingLevel?: 'h2' | 'h3' }
+const { items, locale, headingLevel } = Astro.props;
+---
+<ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+  {items.map((c, i) => <li class="flex"><ChateauCard chateau={c} locale={locale} headingLevel={headingLevel} eager={i === 0} /></li>)}
+</ul>

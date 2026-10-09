@@ -1,0 +1,118 @@
+---
+import { Picture, getImage } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ChateauGrid from '../../components/ChateauGrid.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site, chateaux, chateauImage, type Chateau } from '../../lib/data';
+import { ui, routes, tpl } from '../../lib/i18n';
+import { price, dims, num } from '../../lib/format';
+import { product, breadcrumb } from '../../lib/jsonld';
+
+export function getStaticPaths() {
+  return chateaux.map((c) => ({ params: { slug: c.slug }, props: { chateau: c } }));
+}
+interface Props { chateau: Chateau }
+const { chateau: c } = Astro.props;
+const t = ui();
+const tc = t.chateau;
+const r = routes();
+const vars = {
+  name: c.fr.name, min: c.ageMin, max: c.ageMax, length: num(c.dimensions.length), width: num(c.dimensions.width),
+  capacity: c.capacity, priceDay: c.priceDay, priceWeekend: c.priceWeekend,
+};
+const title = tpl(t.pages.chateau.title, vars);
+const description = tpl(t.pages.chateau.description, vars);
+
+const ogImg = await getImage({ src: chateauImage(c.images[0]!), format: 'jpg', width: 1200 });
+const ldImages = await Promise.all(c.images.map((i) => getImage({ src: chateauImage(i), format: 'jpg', width: 1200 })));
+const crumbs = [
+  { name: t.nav.home, path: r.home },
+  { name: t.nav.chateaux, path: r.chateaux },
+  { name: c.fr.name, path: r.chateau(c.slug) },
+];
+
+const specs = [
+  { label: tc.dimensions, value: dims(c.dimensions), nowrap: true },
+  { label: tc.space, value: dims(c.spaceRequired), nowrap: true },
+  { label: tc.age, value: tpl(tc.ageValue, { min: c.ageMin, max: c.ageMax }) },
+  { label: tc.capacity, value: tpl(tc.capacityValue, { n: c.capacity }) },
+  ...(c.maxUserHeightCm ? [{ label: tc.maxHeight, value: `${c.maxUserHeightCm} ${t.common.cm}` }] : []),
+  { label: tc.power, value: c.power },
+  { label: tc.certification, value: c.certification },
+];
+const others = chateaux.filter((x) => x.slug !== c.slug);
+const bookHref = `${r.reserver}?chateau=${c.slug}`;
+---
+<BaseLayout title={title} description={description} ogImage={ogImg.src} jsonLd={[product(c, ldImages.map((i) => i.src)), breadcrumb(crumbs)]}>
+  <div class="container-x pt-8">
+    <Breadcrumb items={crumbs.map((b, i) => (i === crumbs.length - 1 ? { name: b.name } : b))} />
+    <div class="grid gap-10 lg:grid-cols-[1.25fr_1fr]">
+      <section aria-label={tc.gallery} tabindex="0" class="-mx-4 flex min-w-0 snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0 lg:flex-col lg:gap-4 lg:overflow-visible">
+        {c.images.map((img, i) => (
+          <Picture
+            src={chateauImage(img)}
+            alt={c.fr.imageAlts[i]!}
+            formats={['avif', 'webp']}
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 1024px) 640px, 100vw"
+            class="aspect-[4/3] w-full rounded-[var(--radius-blob)] object-cover"
+            pictureAttributes={{ class: 'block w-[85%] shrink-0 snap-center sm:w-[70%] lg:w-full' }}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            fetchpriority={i === 0 ? 'high' : undefined}
+          />
+        ))}
+      </section>
+
+      <div class="min-w-0 lg:sticky lg:top-24 lg:self-start">
+        <h1 class="text-4xl sm:text-5xl">{c.fr.name}</h1>
+        <p class="mt-4 text-lg text-muted">{c.fr.description}</p>
+
+        <section class="card mt-6 p-6" aria-labelledby="prix">
+          <h2 id="prix" class="text-xl">{tc.pricesTitle}</h2>
+          <dl class="mt-4 grid grid-cols-2 gap-4">
+            <div class="rounded-2xl bg-cream p-4"><dt class="font-bold">{tc.priceDay}</dt><dd class="font-display text-3xl font-extrabold text-accent-ink">{price(c.priceDay)}</dd></div>
+            <div class="rounded-2xl bg-cream p-4"><dt class="font-bold">{tc.priceWeekend}</dt><dd class="font-display text-3xl font-extrabold text-accent-ink">{price(c.priceWeekend)}</dd></div>
+          </dl>
+          <p class="mt-4 text-sm text-muted">{site.fr.priceNote} {site.fr.deliveryNote} {site.fr.weekendNote}</p>
+          <a href={bookHref} class="btn-primary mt-5 w-full">{t.cta.bookThis}</a>
+        </section>
+
+        <section class="mt-8" aria-labelledby="specs">
+          <h2 id="specs" class="text-2xl">{tc.specsTitle}</h2>
+          <dl class="mt-4 divide-y divide-line rounded-3xl border-2 border-line bg-white">
+            {specs.map((s) => (
+              <div class="flex justify-between gap-4 px-5 py-3"><dt class="font-bold">{s.label}</dt><dd class:list={['text-right', { 'whitespace-nowrap': 'nowrap' in s }]}>{s.value}</dd></div>
+            ))}
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-2">
+      <section aria-labelledby="inclus" class="card p-7">
+        <h2 id="inclus" class="text-2xl">{tc.included}</h2>
+        <ul class="mt-4 space-y-2">
+          {c.fr.included.map((i) => (
+            <li class="flex gap-3"><svg viewBox="0 0 24 24" class="mt-1 h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>{i}</li>
+          ))}
+        </ul>
+      </section>
+      <section aria-labelledby="ideal" class="card p-7">
+        <h2 id="ideal" class="text-2xl">{tc.idealFor}</h2>
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {c.fr.idealFor.map((i) => <li class="rounded-full bg-accent-soft px-4 py-2 font-bold">{i}</li>)}
+        </ul>
+        <p class="mt-6"><a href={r.conditions} class="font-bold">{t.cta.conditions}</a></p>
+      </section>
+    </div>
+
+    {others.length > 0 && (
+      <section class="mt-16" aria-labelledby="autres">
+        <h2 id="autres" class="mb-6 text-3xl">{tc.others}</h2>
+        <ChateauGrid items={others} />
+      </section>
+    )}
+  </div>
+  <CtaBand href={bookHref} />
+</BaseLayout>

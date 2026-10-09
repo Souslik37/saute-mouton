@@ -1,0 +1,41 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site, asset } from '../lib/data';
+import { ui } from '../lib/i18n';
+import { rich } from '../lib/format';
+const p = ui().pages.about;
+---
+<BaseLayout title={p.title} description={p.description}>
+  <div class="container-x grid items-start gap-10 pt-10 sm:pt-16 lg:grid-cols-[1fr_1.4fr]">
+    <figure>
+      <Picture
+        src={asset(`site/${site.owner.photo}`)}
+        alt={p.photoAlt}
+        formats={['avif', 'webp']}
+        widths={[400, 640, 900]}
+        sizes="(min-width: 1024px) 420px, 100vw"
+        class="aspect-square w-full rounded-[2.5rem] object-cover"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </figure>
+    <div>
+      <h1 class="text-4xl sm:text-5xl">{p.h1}</h1>
+      <section class="mt-8" aria-labelledby="why">
+        <h2 id="why" class="text-2xl">{p.whyTitle}</h2>
+        {p.why.map((para) => <p class="mt-4 text-lg" set:html={rich(para)} />)}
+      </section>
+      <section class="card mt-10 p-7" aria-labelledby="securite">
+        <h2 id="securite" class="text-2xl">{p.safetyTitle}</h2>
+        <ul class="mt-4 space-y-3">
+          {p.safety.map((s) => (
+            <li class="flex gap-3"><svg viewBox="0 0 24 24" class="mt-1 h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" /></svg>{s}</li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  </div>
+  <CtaBand />
+</BaseLayout>
